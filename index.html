@@ -9,6 +9,10 @@
     <title>Benvenuto</title>
   </head>
 
+  <audio loop id="september">
+    <source src="media/september.mp3" />
+  </audio>
+
   <header class="shadowed rounded sticky">
     <a href="#" class="logo"><span class="icon-user"></span></a>
     <a href="#" class="button">Home</a>
@@ -44,7 +48,7 @@
         </h1>
       </div>
 
-      <a href="#"
+      <a href="#" onclick="document.getElementById('september').play()"
         ><img
           src="media/humming.svg"
           alt=""
