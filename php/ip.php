@@ -1,3 +1,5 @@
+<?php
+
 function get_ip_address() {
   // check for shared internet/ISP IP
   if (!empty($_SERVER['HTTP_CLIENT_IP']) && $this->validate_ip($_SERVER['HTTP_CLIENT_IP']))
@@ -36,3 +38,5 @@ function validate_ip($ip) {
      self::$ip = $ip;
      return true;
  }
+ 
+?>
