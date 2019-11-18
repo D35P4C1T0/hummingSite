@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/rotate.css" />
+    <title id="title">Yo</title>
+  </head>
+
+  <body
+    style="background-image: url('https://media.giphy.com/media/xUOwGcu6wd0cXBj5n2/giphy.gif');
+           background-size: cover;"
+  >
+    <audio loop id="snow" src="media/snow.mp3"></audio>
+    <img
+      src="media/giro.png"
+      class=""
+      alt=""
+      id="giro"
+      onclick="document.getElementById('snow').play() && makeItSpin(this)"
+      style="position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      background-size: cover;
+      object-fit: cover;
+      min-height: 30%;
+      max-height: 70%;
+      min-width: 30%;
+      max-width: 70%;"
+    />
+    <script>
+      function makeItSpin(elem) {
+        elem.className = "rotate"
+      }
+    </script>
+  </body>
+</html>

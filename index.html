@@ -15,16 +15,18 @@
 
   <audio id="iphone6" src="media/iphone6.mp3"></audio>
 
-  <header class="shadowed rounded sticky">
+  <header class="shadowed rounded sticky" style="text-align: right;">
     <a
       href="#"
       class="logo"
       onclick="document.getElementById('hitmarker').play()"
+      style="position: absolute;
+              left: 0.5vw"
       ><span class="icon-user"></span
     ></a>
     <a href="#" class="button">Home</a>
     <!-- <a href="#articles" class="button">Blog</a> -->
-    <a href="https://t.me/kirbychan" class="button">Chi sono</a>
+    <a href="https://t.me/kirbychan" class="button">Telegram</a>
     <a href="presentazioni.html" class="button">Slides</a>
 
     <!-- <label for="drawer-control"
@@ -77,15 +79,19 @@
       <div class="row">
         <div style="margin: auto; margin-bottom: 1.5em;">
           <div class="col-1-s">
-            <a href="https://tinyurl.com/y5ac82ck">
-              <span class="icon-info"></span>
-            </a>
+            <span class="tooltip" aria-label="YouTube"
+              ><a href="https://tinyurl.com/y5ac82ck">
+                <span class="icon-info"></span>
+              </a>
+            </span>
             <span class="tooltip" aria-label="matteosasoris@gmail.com"
               ><span class="icon-mail"></span>
             </span>
-            <a href="https://wiki.archlinux.org/"
-              ><span class="icon-link"></span>
-            </a>
+            <span class="tooltip" aria-label="GitHub Page"
+              ><a href="https://github.com/D35P4C1T0"
+                ><span class="icon-link"></span>
+              </a>
+            </span>
           </div>
         </div>
       </div>
@@ -102,11 +108,16 @@
         style="margin: auto; margin-block: 1.5em;margin-bottom:6em"
       >
         <div style="margin: auto">
-          <a href="http://bevia.ml/media/DRAGO.pdf" download="SeiUnDrago.pdf">
-            <button class="shadowed">Ottieni CV</button>
-          </a>
-          <a href="mailto:matteosasoris@gmail.com?Subject=Proposta di Lavoro">
-            <button class="shadowed">Contattami</button>
+          <a
+            class="button shadowed"
+            href="http://bevia.ml/media/DRAGO.pdf"
+            download="SeiUnDrago.pdf"
+            >Ottieni CV</a
+          >
+          <a
+            href="mailto:matteosasoris@gmail.com?Subject=Proposta di Lavoro"
+            class="button shadowed"
+            >Contattami
           </a>
         </div>
       </div>
@@ -196,7 +207,7 @@
 
         <a href="poll.html">Aderisci alla NNN? Vota!</a>
         |
-        <a href="#">About</a>
+        <a href="dev.html">About</a>
         |
       </p>
     </footer>
