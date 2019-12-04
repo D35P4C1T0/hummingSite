@@ -13,6 +13,7 @@ const addToActiveList = persona => {
   li.innerHTML = persona
   listaAttivi.appendChild(li)
 }
+
 const addToPassiveList = persona => {
   const li = document.createElement("li")
   li.innerHTML = persona
@@ -30,6 +31,7 @@ const addNome = () => {
     fieldTextNome.placeholder = "Boh, scialla"
     return
   }
+
   if (
     !personeAttive.includes(nomeInput) &&
     !personePassive.includes(nomeInput)
@@ -47,7 +49,21 @@ const addNome = () => {
 }
 
 const estrai = () => {
-  if (personeAttive.length == 0 || personePassive.length == 0) {
+  if (personeAttive.length > 0 && personePassive.length > 0) {
+    listaAttivi.innerHTML = ""
+    listaPassivi.innerHTML = ""
+    personeAttive.forEach(persona => addToActiveList(persona))
+    personePassive.forEach(persona => addToPassiveList(persona))
+  }
+  if (personeAttive.length == 1 && personePassive.length == 1) {
+    if (personeAttive[0] == personePassive[0]) {
+      console.log("caso particolare, due persone uguali e ci sono solo loro")
+      return
+    }
+  }
+  if (personeAttive.length == 0 && personePassive.length == 0) {
+    listaAttivi.innerHTML = ""
+    listaPassivi.innerHTML = ""
     nomeEstratto.innerHTML = "Buoni Regali!"
     return
   }
@@ -71,26 +87,10 @@ const estrai = () => {
   console.log("estratto1: " + personaAlpha)
   console.log("estratto2: " + personaBeta)
 
-  if (personeAttive.length > 0 && personePassive.length > 0) {
-    listaAttivi.innerHTML = ""
-    listaPassivi.innerHTML = ""
-    personeAttive.forEach(persona => addToActiveList(persona))
-    personePassive.forEach(persona => addToPassiveList(persona))
-  }
-
-  if (personeAttive.length == 0 && personePassive.length == 0) {
-    listaAttivi.innerHTML = ""
-    listaPassivi.innerHTML = ""
-  }
-
   //console.log("estratti: " + estratto1 + " " + estratto2)
   if (personaAlpha != undefined && personaBeta != undefined) {
     nomeEstratto.innerHTML =
-      "Porca figa, tocca a " +
-      personaAlpha +
-      " fare un regalo a " +
-      personaBeta +
-      "!"
+      "Uè, tocca a " + personaAlpha + " fare un regalo a " + personaBeta + "!"
   } else {
     listaAttivi.innerHTML = ""
     listaPassivi.innerHTML = ""
