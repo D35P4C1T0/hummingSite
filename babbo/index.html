@@ -12,21 +12,42 @@
   </head>
   <body>
     <audio loop id="snow" src="lastXMAS.mp3"></audio>
-    <h1>Porcoporco Babbo Segreto Estraetor</h1>
-    <br />
-    <input type="text" id="fieldTextNome" placeholder="Riempimi" />
-    <button id="addNomeButton">Aggiungilo!</button>
-    <button id="estraiButton">Dai siam pronti, estraiaml</button
-    ><button onclick="document.getElementById('snow').play()">🎄Song!🎄</button>
+
+    <h2>🎅 Babbo Segreto Estraetor 🎅</h2>
+
+    <div style="text-align: center; min-width: 93%;">
+      <input
+        type="text"
+        id="fieldTextNome"
+        placeholder="Riempimi"
+        style="min-width: inherit;"
+      />
+    </div>
+    <div style="text-align: justify;">
+      <button id="addNomeButton" style="min-width: 48%;">
+        Aggiungi!</button
+      ><button
+        onclick="document.getElementById('snow').play()"
+        style="min-width: 48%;"
+      >
+        🎄Song!🎄
+      </button>
+    </div>
+
+    <div style="min-width: 96.5%;">
+      <button id="estraiButton" style="min-width: inherit;">
+        Dai siam pronti, estrai
+      </button>
+    </div>
     <div>
-      <br />
+      <h2 id="nomeEstratto"></h2>
       <ul
         id="listaAttivi"
         style="display: inline-block; margin-right: 10em;"
       ></ul>
       <ul id="listaPassivi" style="display: inline-block;"></ul>
     </div>
-    <h1 id="nomeEstratto"></h1>
+
     <script src="script.js"></script>
   </body>
 </html>
