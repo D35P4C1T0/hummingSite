@@ -1,20 +1,28 @@
-const listaNomi = document.getElementById("listaNomi")
+const listaAttivi = document.getElementById("listaAttivi")
+const listaPassivi = document.getElementById("listaPassivi")
 const nomeEstratto = document.getElementById("nomeEstratto")
 const addNomeButton = document.getElementById("addNomeButton")
 const fieldTextNome = document.getElementById("fieldTextNome")
 const estraiButton = document.getElementById("estraiButton")
 
-let people = []
+let personeAttive = []
+let personePassive = []
 
-const addToList = persona => {
+const addToActiveList = persona => {
   const li = document.createElement("li")
   li.innerHTML = persona
-  listaNomi.appendChild(li)
+  listaAttivi.appendChild(li)
+}
+const addToPassiveList = persona => {
+  const li = document.createElement("li")
+  li.innerHTML = persona
+  listaPassivi.appendChild(li)
 }
 
 const addNome = () => {
   const nomeInput = fieldTextNome.value
   console.log(nomeInput)
+  fieldTextNome.value = ""
   //console.log(nomeInput.lenght)
 
   if (nomeInput == "") {
@@ -22,50 +30,70 @@ const addNome = () => {
     fieldTextNome.placeholder = "Boh, scialla"
     return
   }
-  if (!people.includes(nomeInput)) {
-    people.push(nomeInput)
-    console.log(people)
+  if (
+    !personeAttive.includes(nomeInput) &&
+    !personePassive.includes(nomeInput)
+  ) {
+    personeAttive.push(nomeInput)
+    personePassive.push(nomeInput)
+    //console.log(personeAttive)
   }
-  if (people.length > 0) {
-    listaNomi.innerHTML = ""
-    people.forEach(persona => addToList(persona))
+  if (personeAttive.length > 0 && personePassive.length > 0) {
+    listaAttivi.innerHTML = ""
+    listaPassivi.innerHTML = ""
+    personeAttive.forEach(persona => addToActiveList(persona))
+    personePassive.forEach(persona => addToPassiveList(persona))
   }
 }
 
 const estrai = () => {
-  if (people.length % 2 != 0) {
-    alert("Oh gnari, qua si deve essere in numeor pari!")
+  if (personeAttive.length == 0 || personePassive.length == 0) {
+    nomeEstratto.innerHTML = "Buoni Regali!"
     return
   }
-  let indice1 = Math.floor(Math.random() * people.length)
-  let personaAlpha = people[indice1]
-  people.splice(indice1, 1) // cancello la persona estratta
-  let indice2 = Math.floor(Math.random() * people.length)
-  let personaBeta = people[indice2]
-  people.splice(indice2, 1)
+
+  let randomAttivoIndex = Math.floor(Math.random() * personeAttive.length)
+  let randomPassivoIndex = Math.floor(Math.random() * personePassive.length)
+  let personaAlpha = personeAttive[randomAttivoIndex]
+  let personaBeta = personePassive[randomPassivoIndex]
+  while (personaAlpha == personaBeta) {
+    // per non avere due persone uguali. Se sono già diversi, non entra neanche nel loop
+    console.log("caso particolare, riestraggo")
+    personaAlpha = personeAttive[randomAttivoIndex]
+    personaBeta = personePassive[randomPassivoIndex]
+    randomAttivoIndex = Math.floor(Math.random() * personeAttive.length)
+    randomPassivoIndex = Math.floor(Math.random() * personePassive.length)
+  }
+
+  personeAttive.splice(randomAttivoIndex, 1) // cancello la persona estratta
+  personePassive.splice(randomPassivoIndex, 1)
 
   console.log("estratto1: " + personaAlpha)
   console.log("estratto2: " + personaBeta)
 
-  if (people.length > 0) {
-    listaNomi.innerHTML = ""
-    people.forEach(persona => addToList(persona))
+  if (personeAttive.length > 0 && personePassive.length > 0) {
+    listaAttivi.innerHTML = ""
+    listaPassivi.innerHTML = ""
+    personeAttive.forEach(persona => addToActiveList(persona))
+    personePassive.forEach(persona => addToPassiveList(persona))
   }
 
-  if (people.length == 0) {
-    listaNomi.innerHTML = ""
+  if (personeAttive.length == 0 && personePassive.length == 0) {
+    listaAttivi.innerHTML = ""
+    listaPassivi.innerHTML = ""
   }
 
   //console.log("estratti: " + estratto1 + " " + estratto2)
   if (personaAlpha != undefined && personaBeta != undefined) {
     nomeEstratto.innerHTML =
       "Porca figa, tocca a " +
-      personaBeta +
-      " fare un regalo a " +
       personaAlpha +
+      " fare un regalo a " +
+      personaBeta +
       "!"
   } else {
-    listaNomi.innerHTML = ""
+    listaAttivi.innerHTML = ""
+    listaPassivi.innerHTML = ""
   }
 }
 
