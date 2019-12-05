@@ -10,35 +10,41 @@
     />
     <title>Estraiaml</title>
   </head>
+
   <body>
     <audio loop id="snow" src="lastXMAS.mp3"></audio>
 
     <h2>🎅 Babbo Segreto Estraetor 🎅</h2>
 
-    <div style="text-align: center; min-width: 93%;">
-      <input
-        type="text"
-        id="fieldTextNome"
-        placeholder="Riempimi"
-        style="min-width: inherit;"
-      />
-    </div>
-    <div style="text-align: justify;">
-      <button id="addNomeButton" style="min-width: 48%;">
-        Aggiungi!</button
-      ><button
-        onclick="document.getElementById('snow').play()"
-        style="min-width: 48%;"
-      >
-        🎄Song!🎄
-      </button>
-    </div>
+    <details>
+      <summary>Cos'è il Babbo Segreto? 🥛 🍪 🎅</summary>
+      <p style="text-align: justify;">
+        Il "Babbo Natale Segreto" ha come scopo il diffondere lo spirito
+        natalizio facendo un regalo a qualcuno che magari non sarebbe nella tua
+        abituale lista. Il gioco coinvolge un gruppo di persone che, ad
+        estrazione, si faranno uno scambio di regali senza che sapere chi farà
+        il dono a chi. 🎄 🎁 🧦
+      </p>
+    </details>
+    <br />
 
-    <div style="min-width: 96.5%;">
-      <button id="estraiButton" style="min-width: inherit;">
-        Dai siam pronti, estrai
-      </button>
-    </div>
+    <input
+      type="text"
+      id="fieldTextNome"
+      placeholder="Riempimi"
+      style="display: inline; max-width: 40%;"
+    />
+
+    <button id="addNomeButton" style="display: inline;">
+      Aggiungi!</button
+    ><button onclick="document.getElementById('snow').play()">
+      🎄Song!🎄
+    </button>
+
+    <button id="estraiButton" style="display: inline;">
+      Estraiaml!
+    </button>
+
     <div>
       <h2 id="nomeEstratto"></h2>
       <ul
