@@ -75,16 +75,19 @@ const estrai = () => {
       donatoreSelezionato +
       " fare un regalo a " +
       ricevente +
-      "!"
+      "! Premi qui per far sparire il messaggio."
   }
 }
 
 addNomeButton.onclick = addNome
 fieldTextNome.onchange = addNome
+estraiButton.onclick = estrai
 fieldTextNome.onclick = () => {
   nomeEstratto.innerHTML = ""
 }
-estraiButton.onclick = estrai
+nomeEstratto.onclick = () => {
+  nomeEstratto.innerHTML = ""
+}
 
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
