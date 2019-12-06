@@ -14,7 +14,9 @@
   <body>
     <audio loop id="snow" src="lastXMAS.mp3"></audio>
 
-    <h2>🎅 Babbo Segreto Estraetor 🎅</h2>
+    <h2 onclick="document.getElementById('snow').play()">
+      🎅 Babbo Segreto Estraetor 🎅
+    </h2>
 
     <details>
       <summary>Cos'è il Babbo Segreto? 🥛 🍪 🎅</summary>
@@ -32,18 +34,23 @@
       type="text"
       id="fieldTextNome"
       placeholder="Riempimi"
-      style="display: inline; max-width: 40%;"
+      style="display: inline; width: 45%;"
     />
 
     <button id="addNomeButton" style="display: inline;">
-      Aggiungi!</button
-    ><button onclick="document.getElementById('snow').play()">
+      Aggiungi!
+    </button>
+    <!-- <button onclick="document.getElementById('snow').play()">
       🎄Song!🎄
-    </button>
+    </button> -->
 
-    <button id="estraiButton" style="display: inline;">
-      Estraiaml!
-    </button>
+    <div>
+      <select name="" id="whoAmIPicker" style="display: inline; width: 45%;">
+        <option value="">Chi sei?</option></select
+      ><button id="estraiButton" style="display: inline;">
+        Estraiaml!
+      </button>
+    </div>
 
     <div>
       <h2 id="nomeEstratto"></h2>
@@ -51,7 +58,7 @@
         id="listaAttivi"
         style="display: inline-block; margin-right: 10em;"
       ></ul>
-      <ul id="listaPassivi" style="display: inline-block;"></ul>
+      <!-- <ul id="listaPassivi" style="display: inline-block;"></ul> -->
     </div>
 
     <script src="script.js"></script>
