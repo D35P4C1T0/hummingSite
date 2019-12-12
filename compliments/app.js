@@ -1,13 +1,25 @@
-const card = document.getElementById("card")
+$(document).ready(function() {
+  var isReading = false
 
-sayACompliment = async () => {
-  console.log("ti dico un complimento")
-  const compliment_obj = await fetch("https://complimentr.com/api").then(r =>
-    r.json()
-  )
+  $("#compliment").click(function() {
+    const compliment = tellACompliment()
+  })
+
+  function StartCallback() {
+    isReading = true
+  }
+
+  function EndCallback() {
+    isReading = false
+  }
+})
+
+const tellACompliment = async () => {
+  const data = await (await fetch("https://complimentr.com/api")).json()
+  //console.log(data.compliment)
+  //console.log("diocane, il contenuto è: " + json.compliment)
   // fetcho un complimento
-
-  let message = compliment_obj.compliment
+  //console.log(compliment_obj.compliment)
+  //return compliment_obj.compliment
+  responsiveVoice.speak(data.compliment, "Italian Female")
 }
-
-card.onclick = sayACompliment
