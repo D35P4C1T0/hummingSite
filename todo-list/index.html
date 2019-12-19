@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>To-Do</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/2d7d088a56.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div>
+        <div id="main" class="card">
+          <div class="card-content">
+            <h1 style="display: inline;">
+              <span class="card-title"></span>
+              <span class="styling">To-Do</span>
+              <span>List</span>
+            </h1>
+            <img
+              src="./media/logo.svg"
+              float="right"
+              width="100em"
+              style="display: inline;"
+            />
+            <div class="row">
+              <form id="task-form">
+                <div class="input-field col s12">
+                  <input type="text" name="task" id="task" />
+                  <label for="task">Descrizione dell'attività</label>
+                </div>
+                <button type="submit" class="btn blacck" />
+                Aggiungi nota <i class="far fa-sticky-note"></i>
+              </form>
+            </div>
+          </div>
+
+          <div class="card-action">
+            <h5 id="task-title" style="text-align: left;">Le tue note</h5>
+            <div class="input-field col s12">
+              <input type="text" name="filter" id="filter" />
+              <label for="filter"><i class="fas fa-search"></i> | Cerca</label>
+            </div>
+            <ul class="collection"></ul>
+            <a href="#" class="clear-tasks btn blacck"
+              >Svuota lista <i class="fas fa-trash hey"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="./script/app.js"></script>
+  </body>
+</html>
