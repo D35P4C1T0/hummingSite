@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style/dark.min.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <script
+      src="https://kit.fontawesome.com/2d7d088a56.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Todo</title>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    <div>
+      <input
+        type="text"
+        id="taskName"
+        placeholder="Descrizione attività"
+        style="display: inline;"
+      />
+      <button id="addTaskButton">Aggiungi Nota</button>
+    </div>
+    <br />
+
+    <h2 style="display: inline; padding-right: 1em;">Le tue note</h2>
+    <input
+      type="text"
+      id="filterSearchBar"
+      placeholder="Cerca per nome"
+      style="display: inline; padding-left: 1em;"
+    />
+    <ul id="listaAttività"></ul>
+
+    <p style="padding-top: 2em;">
+      <button id="empyListButton">Svuola lista</button>
+    </p>
+
+    <script src="./script/app.js"></script>
+  </body>
+</html>

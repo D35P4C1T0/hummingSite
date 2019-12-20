@@ -4,7 +4,7 @@ const form = document.querySelector("#task-form")
 form.addEventListener("submit", function(e) {
   const taskInput = document.querySelector("#task")
   if (taskInput.value === "") {
-    alert("Scrivi qualcosa, non puoi aggiungere una nota vuota furbetto!")
+    alert("Compila il contenuto dell'attività")
   } else {
     const li = document.createElement("li")
     li.className = "collection-item greyyyy"
@@ -88,7 +88,7 @@ clearBtn.addEventListener("click", clearTasks)
 function clearTasks() {
   if (
     confirm(
-      "Sicuro di voler rimuovere tutte le tue note? Attenzione: non puoi tornare indietro!"
+      "Confermi di voler rimuovere tutte le tue note in maniera definitiva?"
     )
   ) {
     const taskList = document.querySelector(".collection")

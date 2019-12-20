@@ -1,0 +1,12 @@
+ul#horizontal-list li {
+  display: inline;
+}
+
+ul#horizontal-list ul {
+  display: inline;
+}
+
+#toggle {
+  padding-left: 0.5em;
+  text-align: justify;
+}
