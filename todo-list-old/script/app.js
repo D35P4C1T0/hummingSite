@@ -133,10 +133,6 @@ function trashFunzione(e) {
 
 const prova = document.querySelector(".collection")
 prova.addEventListener("click", provaf)
-function provaf(e) {
-  if (e.target.parentElement.classList.contains("collection-item")) {
-  }
-}
 
 $(window).scroll(function() {
   if ($(window).scrollTop() >= 300) {

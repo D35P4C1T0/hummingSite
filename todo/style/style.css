@@ -10,3 +10,15 @@ ul#horizontal-list ul {
   padding-left: 0.5em;
   text-align: justify;
 }
+
+.icon {
+  color: #657b83;
+}
+
+.done {
+  background-color: #2aa198;
+}
+
+.notDone {
+  background-color: #dc322f;
+}

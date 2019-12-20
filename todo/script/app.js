@@ -16,14 +16,16 @@ const addTask = () => {
   }
 
   //const descrizioneAttività = taskName.value
-  const boxAttività = document.createElement("tr")
-  boxAttività.id = "horizontal-list"
+  const boxAttività = document.createElement("details")
+  //boxAttività.id = "horizontal-list"
+  //boxAttività.className = "notDone" // rosso
+  //boxAttività.className = "done" // verde
 
-  const descrizioneAttività = document.createElement("td")
+  const descrizioneAttività = document.createElement("summary")
   descrizioneAttività.innerHTML = taskName.value
   boxAttività.appendChild(descrizioneAttività)
 
-  const togglesList = document.createElement("tr")
+  const togglesList = document.createElement("ul")
   togglesList.id = "horizontal-list"
 
   var currentdate = new Date()
@@ -41,31 +43,30 @@ const addTask = () => {
     ":" +
     currentdate.getSeconds()
 
-  const date = document.createElement("td")
+  const date = document.createElement("li")
   date.innerHTML = datetime
   togglesList.appendChild(date)
 
-  const tickToggle = document.createElement("td")
-  tickToggle.innerHTML = '<a id="toggle"><i class="fas fa-check"></i></a>'
+  const tickToggle = document.createElement("li")
+  tickToggle.innerHTML = '<a id="toggle"><i class="fas fa-check icon"></i></a>'
   togglesList.appendChild(tickToggle)
 
-  const notDoneToggle = document.createElement("td")
-  notDoneToggle.innerHTML = '<a id="toggle"><i class="fas fa-times"></i></a>'
+  const notDoneToggle = document.createElement("li")
+  notDoneToggle.innerHTML =
+    '<a id="toggle"><i class="fas fa-times icon"></i></a>'
   togglesList.appendChild(notDoneToggle)
 
-  const removeNoteToggle = document.createElement("td")
-  removeNoteToggle.innerHTML = '<a id="toggle"><i class="fas fa-trash"></i></a>'
+  const removeNoteToggle = document.createElement("li")
+  removeNoteToggle.innerHTML =
+    '<a id="toggle"><i class="fas fa-trash icon"></i></a>'
   togglesList.appendChild(removeNoteToggle)
 
-  const togglesListElement = document.createElement("td")
-  togglesListElement.appendChild(togglesList)
-  boxAttività.appendChild(togglesListElement)
+  boxAttività.appendChild(togglesList)
   listaAttività.appendChild(boxAttività)
 
   let attività = new Map()
   attività.set("info", descrizioneAttività.innerHTML)
   attività.set("extra", togglesList)
-
   tasks.push(attività)
   console.log(tasks)
 }
