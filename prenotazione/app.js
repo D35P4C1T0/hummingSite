@@ -7,9 +7,9 @@
 /*
 
 - riempire il select coi nomi della gente - FATTO
-- controllare i posti liberi dal json
+- controllare i posti liberi dal json - mannaggia alle callback
 - dire se la prenotazione è avvenuta o meno 
-- bottone reset che solo io posso attivare (tipo cosa a due fattori)
+- bottone reset che solo io posso attivare (tipo cosa a due fattori) - Fatto
 
 */
 
@@ -37,11 +37,12 @@ let porcoporcoPeople = [
   "Elisa"
 ].sort()
 
-// console.log(porcoporcoPeople)
-
-let dweetName = "PorcoPorcoBooking"
+var dweetName = "PorcoPorcoBooking"
 let nope = "🙅🏻‍♂️"
 let yah = "🙋🏻‍♂️"
+
+let pollo = "stadiobase"
+var lastSavedJson
 
 porcoporcoPeople.forEach(nome => {
   let nameEntry = document.createElement("option")
@@ -50,29 +51,28 @@ porcoporcoPeople.forEach(nome => {
   peopleSelection.appendChild(nameEntry)
 })
 
-const doTheMagic = () => {
+const init = () => {
+  //////////////////////////////////
   let selezione = peopleSelection.value
   if (selezione === "") {
     result.innerHTML = "Pls, scegli il tuo nome dall'elenco"
     return
   }
-
+  //////////////////////////////////
   let postiOccupati = []
-  var lastSavedJson
-  //console.log(lastSavedJson)
 
+  getDweet(dweetName)
   // postiSalvati = Object.values(lastSavedJson)[0]
   // Object.values(postiSalvati).forEach(element => {
   //   postiOccupati.push(element)
   // })
 
   //sendDweet(lastSavedJson)
-  getDweet(dweetName)
 
   // console.log("candio " + JSON.stringify(sampleJson))
 }
 
-const sendDweet = jsonObject => {
+function sendDweet(jsonObject) {
   dweetio.dweet_for(dweetName, JSON.stringify(jsonObject), function(
     err,
     dweet
@@ -83,7 +83,7 @@ const sendDweet = jsonObject => {
   })
 }
 
-const getDweet = dweetName => {
+function getDweet(dweetName) {
   dweetio.get_latest_dweet_for(dweetName, function(err, dweet) {
     var dweet = dweet[0] // Dweet is always an array of 1
     console.log(dweet.thing) // The generated name
@@ -98,11 +98,15 @@ const getDweet = dweetName => {
     //console.log("full contet: " + fullContent)
     let actual_JSON = JSON.parse(fullContent) // main json
     //console.log(actual_JSON)
-    lastSavedJson = actual_JSON
+    //lastSavedJson = actual_JSON
+    setLastJson(actual_JSON)
     //console.log(lastSavedJson)
   })
 }
-
+function setLastJson(newestJson) {
+  lastSavedJson = newestJson
+  console.log("Ultimo json da dweet preso e aggiornato")
+}
 const autenticateMe = () => {
   // manculetHash = 746614219
   // manculetHash deriva da "manculetvecio", la passphrase
@@ -161,5 +165,5 @@ function stringToHash(string) {
   return hash
 }
 
-sendButton.onclick = doTheMagic
+sendButton.onclick = init
 resetButton.onclick = autenticateMe
