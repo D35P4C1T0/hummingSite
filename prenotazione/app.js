@@ -6,19 +6,25 @@
 
 /*
 
-- riempire il select coi nomi della gente
+- riempire il select coi nomi della gente - FATTO
 - controllare i posti liberi dal json
-- dire se la prenotazione è avvenuta o meno
+- dire se la prenotazione è avvenuta o meno 
 - bottone reset che solo io posso attivare (tipo cosa a due fattori)
 
 */
 
+let peopleSelection = document.getElementById("people") //select da riempire con le option
+let result = document.getElementById("risultato") //select da riempire con le option
+let sendButton = document.getElementById("sendButton") //select da riempire con le option
+let resetButton = document.getElementById("secretResetButton") //select da riempire con le option
+let hiddenTextField = document.getElementById("hiddenTextField") //select da riempire con le option
+
 let porcoporcoPeople = [
   "Chiara",
   "Lorenzo",
-  " Claudio",
-  "Cora",
-  "Abe",
+  "Claudio",
+  "Coradi",
+  "Abeni",
   "Alessia",
   "Martina",
   "Cami",
@@ -29,31 +35,45 @@ let porcoporcoPeople = [
   "Mery",
   "Consiglio",
   "Elisa"
-]
+].sort()
 
-let peopleSelection = document.getElementById("people") //select da riempire con le option
-let result = document.getElementById("risultato") //select da riempire con le option
-let sendButton = document.getElementById("sendButton") //select da riempire con le option
+// console.log(porcoporcoPeople)
 
+let dweetName = "PorcoPorcoBooking"
 let nope = "🙅🏻‍♂️"
 let yah = "🙋🏻‍♂️"
 
-let dweetName = "PorcoPorcoBooking"
+porcoporcoPeople.forEach(nome => {
+  let nameEntry = document.createElement("option")
+  nameEntry.innerHTML = nome
+  nameEntry.value = nome
+  peopleSelection.appendChild(nameEntry)
+})
 
-const startOmegalul = () => {
-  loadJSON(function(response) {
-    // Parse JSON string into object
-    sampleJson = JSON.parse(response)
-    //console.log(lastFetch)
-    //lastFetch = actual_JSON
+const doTheMagic = () => {
+  let selezione = peopleSelection.value
+  if (selezione === "") {
+    result.innerHTML = "Pls, scegli il tuo nome dall'elenco"
+    return
+  }
 
-    init(sampleJson)
-    getDweet()
-  })
+  let postiOccupati = []
+  var lastSavedJson
+  //console.log(lastSavedJson)
+
+  // postiSalvati = Object.values(lastSavedJson)[0]
+  // Object.values(postiSalvati).forEach(element => {
+  //   postiOccupati.push(element)
+  // })
+
+  //sendDweet(lastSavedJson)
+  getDweet(dweetName)
+
+  // console.log("candio " + JSON.stringify(sampleJson))
 }
 
-const init = sampleJson => {
-  dweetio.dweet_for(dweetName, JSON.stringify(sampleJson), function(
+const sendDweet = jsonObject => {
+  dweetio.dweet_for(dweetName, JSON.stringify(jsonObject), function(
     err,
     dweet
   ) {
@@ -63,7 +83,7 @@ const init = sampleJson => {
   })
 }
 
-const getDweet = () => {
+const getDweet = dweetName => {
   dweetio.get_latest_dweet_for(dweetName, function(err, dweet) {
     var dweet = dweet[0] // Dweet is always an array of 1
     console.log(dweet.thing) // The generated name
@@ -75,10 +95,46 @@ const getDweet = () => {
       fullContent += letter // rimetto apposto il dweet che separa ogni lettera
     })
 
-    console.log("full contet: " + fullContent)
+    //console.log("full contet: " + fullContent)
     let actual_JSON = JSON.parse(fullContent) // main json
-    console.log(actual_JSON)
+    //console.log(actual_JSON)
+    lastSavedJson = actual_JSON
+    //console.log(lastSavedJson)
   })
+}
+
+const autenticateMe = () => {
+  // manculetHash = 746614219
+  // manculetHash deriva da "manculetvecio", la passphrase
+  hiddenTextField.style = "visibility: visible"
+  let passphrase = ""
+  hiddenTextField.onchange = () => {
+    passphrase = hiddenTextField.value
+    //console.log("pollo")
+    let manculetHash = stringToHash(passphrase)
+    let secondaChiave = stringToHash("colCaspita")
+    //console.log(manculetHash ^ secondaChiave)
+
+    let cryptoResult = 904009744
+    // cryptoresult = manculetHash ^ secondaChiave
+    // manculetHash = cryptoResult ^ secondaChiave
+    // secondaChivae = cryptoResult ^ manculetHash
+
+    if ((manculetHash ^ secondaChiave) === 904009744) {
+      console.log("okkaido")
+      let defaultJson = {
+        "troyota:": { posto1: "", posto2: "", posto3: "", posto4: "" }
+      }
+      hiddenTextField.value = "Reset avvenuto"
+      sendDweet(JSON.stringify(defaultJson))
+      // loggato
+    } else {
+      hiddenTextField.style = "visibility: hidden"
+      return
+    }
+  }
+
+  //console.log("passphrase= " + passphrase)
 }
 
 function loadJSON(callback) {
@@ -94,4 +150,16 @@ function loadJSON(callback) {
   xobj.send(null)
 }
 
-sendButton.onclick = startOmegalul
+function stringToHash(string) {
+  var hash = 0
+  if (string.length == 0) return hash
+  for (i = 0; i < string.length; i++) {
+    char = string.charCodeAt(i)
+    hash = (hash << 5) - hash + char
+    hash = hash & hash
+  }
+  return hash
+}
+
+sendButton.onclick = doTheMagic
+resetButton.onclick = autenticateMe

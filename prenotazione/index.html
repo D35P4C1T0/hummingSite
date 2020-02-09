@@ -12,15 +12,22 @@
     <title>Posti liberi</title>
   </head>
   <body>
-    <h1>Prenotazioni per la macchina di Giro</h1>
-
-    <h3 id="risultato">Ci sono x posti liberi</h3>
-
+    <h1 id="secretResetButton">Prenotazioni per la macchina di Giro</h1>
+    <h3 id="risultato">Seleziona il tuo nome dall'elenco</h3>
     <select id="people" style="display: inline;">
-      <option value="volvo">Chi sei?</option>
+      <option value="">Mostra nomi</option>
     </select>
-
     <button style="display: inline;" id="sendButton">Prenota!</button>
+    <ul id="listaPrenotazioni"></ul>
+
+    <input
+      type="text"
+      name=""
+      id="hiddenTextField"
+      style="visibility: hidden;"
+      placeholder="Chiave Super Segreta :D"
+    />
+
     <script src="app.js"></script>
   </body>
 </html>
