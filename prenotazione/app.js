@@ -17,7 +17,9 @@ let peopleSelection = document.getElementById("people") //select da riempire con
 let result = document.getElementById("risultato") //select da riempire con le option
 let sendButton = document.getElementById("sendButton") //select da riempire con le option
 let resetButton = document.getElementById("secretResetButton") //select da riempire con le option
+let latestButton = document.getElementById("latestButton") //select da riempire con le option
 let hiddenTextField = document.getElementById("hiddenTextField") //select da riempire con le option
+let displayList = document.getElementById("listaPrenotazioni") //select da riempire con le option
 
 let porcoporcoPeople = [
   "Chiara",
@@ -40,9 +42,7 @@ let porcoporcoPeople = [
 var dweetName = "PorcoPorcoBooking"
 let nope = "🙅🏻‍♂️"
 let yah = "🙋🏻‍♂️"
-
-let pollo = "stadiobase"
-var lastSavedJson
+var postiMassimi = 4
 
 porcoporcoPeople.forEach(nome => {
   let nameEntry = document.createElement("option")
@@ -52,24 +52,12 @@ porcoporcoPeople.forEach(nome => {
 })
 
 const init = () => {
-  //////////////////////////////////
   let selezione = peopleSelection.value
   if (selezione === "") {
     result.innerHTML = "Pls, scegli il tuo nome dall'elenco"
     return
   }
-  //////////////////////////////////
-  let postiOccupati = []
-
-  getDweet(dweetName)
-  // postiSalvati = Object.values(lastSavedJson)[0]
-  // Object.values(postiSalvati).forEach(element => {
-  //   postiOccupati.push(element)
-  // })
-
-  //sendDweet(lastSavedJson)
-
-  // console.log("candio " + JSON.stringify(sampleJson))
+  addPrenotazione(selezione, dweetName)
 }
 
 function sendDweet(jsonObject) {
@@ -86,9 +74,9 @@ function sendDweet(jsonObject) {
 function getDweet(dweetName) {
   dweetio.get_latest_dweet_for(dweetName, function(err, dweet) {
     var dweet = dweet[0] // Dweet is always an array of 1
-    console.log(dweet.thing) // The generated name
-    console.log(dweet.content) // The content of the dweet
-    console.log(dweet.created) // The create date of the dweet
+    // console.log(dweet.thing) // The generated name
+    // console.log(dweet.content) // The content of the dweet
+    // console.log(dweet.created) // The create date of the dweet
 
     let fullContent = ""
     Object.values(dweet.content).forEach(letter => {
@@ -96,17 +84,97 @@ function getDweet(dweetName) {
     })
 
     //console.log("full contet: " + fullContent)
-    let actual_JSON = JSON.parse(fullContent) // main json
-    //console.log(actual_JSON)
-    //lastSavedJson = actual_JSON
-    setLastJson(actual_JSON)
-    //console.log(lastSavedJson)
+    // var actual_JSON = JSON.parse(JSON.parse(fullContent)) // old
+    var actual_JSON = JSON.parse(JSON.parse(fullContent)) // new
+
+    let personePrenotate = []
+    //Object.seal(personePrenotate) // fissa la dimensione
+    //console.log(personePrenotate)
+
+    let postiObject = Object.values(actual_JSON)[0]
+    console.log(postiObject)
   })
 }
-function setLastJson(newestJson) {
-  lastSavedJson = newestJson
-  console.log("Ultimo json da dweet preso e aggiornato")
+
+function addPrenotazione(nomeDaInserire, dweetName) {
+  dweetio.get_latest_dweet_for(dweetName, function(err, dweet) {
+    var dweet = dweet[0] // Dweet is always an array of 1
+    // console.log(dweet.thing) // The generated name
+    // console.log(dweet.content) // The content of the dweet
+    // console.log(dweet.created) // The create date of the dweet
+
+    let fullContent = ""
+    Object.values(dweet.content).forEach(letter => {
+      fullContent += letter // rimetto apposto il dweet che separa ogni lettera
+    })
+
+    //console.log("full contet: " + fullContent)
+    // var actual_JSON = JSON.parse(JSON.parse(fullContent)) // old
+    var actual_JSON = JSON.parse(fullContent) // new
+
+    let personePrenotate = []
+
+    let postiObject = Object.values(actual_JSON)[0]
+
+    Object.values(postiObject).forEach(seat => {
+      if (seat != "") {
+        personePrenotate.push(seat)
+      }
+      // prende le persone già a bordo dall'ultimo dweet
+    })
+
+    let returnMessage = "Stato richiesta: "
+    if (!personePrenotate.includes(nomeDaInserire)) {
+      if (personePrenotate.length < postiMassimi) {
+        personePrenotate.push(nomeDaInserire)
+      } else {
+        returnMessage += "Attualmente siamo al completo. "
+      }
+    } else {
+      returnMessage += "Pare che tu abbia già un posto in macchina. "
+    }
+    if (returnMessage === "Stato richiesta: ") {
+      returnMessage += "Prenotazione avvenuta :D " + yah
+    }
+
+    console.log("Pre: " + personePrenotate.length)
+    console.log("Pre: " + personePrenotate)
+
+    // for (
+    //   let index = 0;
+    //   index < postiMassimi - personePrenotate.length;
+    //   index++
+    // ) {
+    //   personePrenotate.push("")
+    // }
+
+    result.innerHTML = returnMessage
+
+    while (personePrenotate.length < 4) {
+      personePrenotate.push("")
+    }
+
+    console.log("Post: " + personePrenotate.length)
+    console.log("Post: " + personePrenotate)
+
+    let toBeSent = {
+      "troyota:": {
+        posto1: personePrenotate[0] + "",
+        posto2: personePrenotate[1] + "",
+        posto3: personePrenotate[2] + "",
+        posto4: personePrenotate[3] + ""
+      }
+    }
+
+    // ^^^^^ esce undefined
+
+    //toBeSent = JSON.parse(toBeSent)
+    sendDweet(toBeSent)
+
+    //console.log(toBeSent["troyota:"])
+  })
 }
+
 const autenticateMe = () => {
   // manculetHash = 746614219
   // manculetHash deriva da "manculetvecio", la passphrase
@@ -129,7 +197,6 @@ const autenticateMe = () => {
       let defaultJson = {
         "troyota:": { posto1: "", posto2: "", posto3: "", posto4: "" }
       }
-      hiddenTextField.value = "Reset avvenuto"
       sendDweet(JSON.stringify(defaultJson))
       // loggato
     } else {
@@ -166,4 +233,7 @@ function stringToHash(string) {
 }
 
 sendButton.onclick = init
+latestButton.onclick = () => {
+  getDweet(dweetName)
+}
 resetButton.onclick = autenticateMe
