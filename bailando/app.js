@@ -7,6 +7,7 @@ function dance() {
     stato = toggle(stato)
     let imgName = stato
     img.src = './media/' + imgName + '.jpg'
+    console.log('cambio avvenuto')
   }, 357.1428)
 }
 
