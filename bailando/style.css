@@ -1,0 +1,33 @@
+#sickyDance {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: black;
+  background-size: cover;
+  object-fit: cover;
+  min-height: 40%;
+  max-height: 80%;
+  min-width: 40%;
+  max-width: 80%;
+}
+
+body {
+  background-image: url('media/cover.jpg');
+  background-size: cover;
+}
+
+.rotate {
+  animation: rotation 8s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
