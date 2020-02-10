@@ -2,7 +2,6 @@ var stato = '1'
 
 function dance() {
   var img = document.getElementById('sickyDance')
-  img.className = 'rotate'
   img.onclick = ''
   setInterval(function() {
     stato = toggle(stato)
