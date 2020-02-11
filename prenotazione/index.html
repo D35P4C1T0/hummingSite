@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./utils/style.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css"
@@ -13,7 +14,18 @@
   </head>
   <body>
     <h1 id="secretResetButton">Prenotazioni per la macchina di Giro</h1>
-    <h3 id="risultato">Seleziona il tuo nome dall'elenco</h3>
+    <h3 id="risultato" style="display: inline;">
+      Seleziona il tuo nome dall'elenco
+    </h3>
+
+    <div
+      id="spinner"
+      class="loaderDisabled"
+      style="display: inline-block;"
+    ></div>
+
+    <br />
+    <br />
     <select id="people" style="display: inline;">
       <option value="">Mostra nomi</option>
     </select>

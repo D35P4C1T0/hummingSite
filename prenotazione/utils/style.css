@@ -1,0 +1,26 @@
+.loader {
+  border: 0.2em solid #435e75; /* Light grey */
+  border-top: 0.2em solid #41a8ec; /* Blue */
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  animation: spin 1s both infinite;
+}
+.loaderDisabled {
+  border: 0.2em solid #435e75; /* Light grey */
+  border-top: 0.2em solid #41a8ec; /* Blue */
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  animation: spin 1s both infinite;
+  visibility: hidden;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
