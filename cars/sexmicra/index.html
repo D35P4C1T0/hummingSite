@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./utils/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css"
+    />
+    <script src="./utils/dweetclient.js"></script>
+    <title>SexMicra</title>
+  </head>
+  <body>
+    <h1 id="secretResetButton">Prenotazioni per la macchina di Claudio</h1>
+    <h3 id="risultato" style="display: inline;">
+      Seleziona il tuo nome dall'elenco
+    </h3>
+
+    <div
+      id="spinner"
+      class="loaderDisabled"
+      style="display: inline-block;"
+    ></div>
+
+    <br />
+    <br />
+    <select id="people" style="display: inline;">
+      <option value="">Elenco dei nomi</option>
+    </select>
+    <button style="display: inline;" id="sendButton">Prenota!</button>
+    <button style="display: inline;" id="latestButton">
+      Controlla Posti liberi
+    </button>
+    <ul id="listaPrenotazioni"></ul>
+
+    <input
+      type="text"
+      name=""
+      id="hiddenTextField"
+      style="visibility: hidden;"
+      placeholder="Chiave Super Segreta :D"
+    />
+
+    <script src="app.js"></script>
+  </body>
+</html>
