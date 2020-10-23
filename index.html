@@ -6,23 +6,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./css/homepage.css" />
     <title>Benvenuto</title>
   </head>
 
-  <audio loop id="september" src="media/september.mp3"></audio>
+  <audio loop id="september" src="./media/september.mp3"></audio>
 
-  <audio id="hitmarker" src="media/hitmarker.mp3"></audio>
+  <audio id="hitmarker" src="./media/hitmarker.mp3"></audio>
 
-  <audio id="iphone6" src="media/iphone6.mp3"></audio>
+  <audio id="iphone6" src="./media/iphone6.mp3"></audio>
 
   <header class="shadowed rounded sticky" style="text-align: right;">
-    <a
-      href="skills.html"
-      class="logo"
-      style="position: absolute;
-              left: 0.5vw"
-      ><span class="icon-user"></span
-    ></a>
     <a href="#" class="button">Home</a>
     <!-- <a href="#articles" class="button">Blog</a> -->
     <a href="https://t.me/kirbychan" class="button">Telegram</a>
@@ -49,15 +43,14 @@
   <img
     src="media/header-alternative.png"
     alt=""
-    class="rounded"
-    style="width: 100%;height: 230px; position: absolute; z-index: -1;"
+    class="rounded header-gradient"
   />
 
   <body>
     <div class="container" style="margin: auto; z-index: 1;">
-      <div class="row" style="margin-top: 30px">
+      <div class="row" style="margin-top: 30px;">
         <h1
-          style="margin: auto; text-align: center; color: white"
+          style="margin: auto; text-align: center; color: white;"
           onclick="document.getElementById('iphone6').play()"
         >
           Matteo Girardi
@@ -69,11 +62,7 @@
       </div>
 
       <a href="sproloqui/index.html"
-        ><img
-          src="media/logo.svg"
-          alt=""
-          style="display: block;margin: auto;
-                  height: 128px; width: auto; margin-top: 25px; margin-bottom: 15px"
+        ><img src="media/logo.svg" alt="" class="logo"
       /></a>
 
       <div class="row">
@@ -96,15 +85,15 @@
         </div>
       </div>
 
-      <p style="margin-left: 2em; margin-right: 2em;">
+      <p class="description">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit
         molestiae tempora voluptate eos quibusdam iusto id perferendis numquam,
         ipsum odio! Aspernatur assumenda corrupti, in repellat laudantium
         necessitatibus earum omnis minima? Abyssus abyssum invocat, ad maiora.
       </p>
 
-      <div class="row" style="margin: auto; margin-bottom:6em">
-        <div style="margin: auto">
+      <div class="row" style="margin: auto; margin-bottom: 6em;">
+        <div style="margin: auto;">
           <a
             class="button shadowed"
             href="./media/DRAGO.pdf"
@@ -122,10 +111,7 @@
         <ul style="list-style: none;">
           <li><h2>Clear Goals</h2></li>
         </ul>
-        <p
-          style="margin-left: 1em; margin-right: 1em; text-align: justify;
-        text-justify: auto; margin-bottom: 3em"
-        >
+        <p class="article">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque nemo
           hic veniam, quibusdam dolorum harum repellat accusamus magni
           laudantium fuga architecto perspiciatis tenetur debitis, in eveniet
@@ -144,10 +130,7 @@
         <ul style="list-style: none;">
           <li><h2>Mind Share</h2></li>
         </ul>
-        <p
-          style="margin-left: 1em; margin-right: 1em; text-align: justify;
-        text-justify: auto; margin-bottom: 3em"
-        >
+        <p class="article">
           Amet purus gravida quis blandit turpis cursus in hac. Tempor commodo
           ullamcorper a lacus vestibulum sed. Massa tincidunt nunc pulvinar
           sapien et ligula ullamcorper malesuada proin. Habitant morbi tristique
@@ -202,7 +185,6 @@
           I.I.S. Benedetto Castelli</a
         >
         |
-
         <a href="poll.html">Aderisci alla NNN? Vota!</a>
         |
         <a href="dev.html">About</a>

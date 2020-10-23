@@ -6,6 +6,9 @@
   background-position: 50% 50%;
   background-attachment: fixed;
   font-weight: normal;
+  background-image: url("../aesthetic/src/television.gif");
+  background-size: 100%;
+  animation: animatedScale 173s ease-in infinite;
 }
 
 #gifBody2 {
