@@ -9,8 +9,10 @@
   </head>
 
   <body
-    style="background-image: url('https://media.giphy.com/media/xUOwGcu6wd0cXBj5n2/giphy.gif');
-           background-size: cover;"
+    style="
+      background-image: url('https://media.giphy.com/media/xUOwGcu6wd0cXBj5n2/giphy.gif');
+      background-size: cover;
+    "
   >
     <audio loop id="snow" src="media/snow.mp3"></audio>
     <img
@@ -19,22 +21,24 @@
       alt=""
       id="giro"
       onclick="document.getElementById('snow').play() && makeItSpin(this)"
-      style="position: absolute;
-      top:0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-      background-size: cover;
-      object-fit: cover;
-      min-height: 30%;
-      max-height: 70%;
-      min-width: 30%;
-      max-width: 70%;"
+      style="
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background-size: cover;
+        object-fit: cover;
+        min-height: 30%;
+        max-height: 70%;
+        min-width: 30%;
+        max-width: 70%;
+      "
     />
     <script>
       function makeItSpin(elem) {
-        elem.className = "rotate"
+        elem.className = "rotate";
       }
     </script>
   </body>
