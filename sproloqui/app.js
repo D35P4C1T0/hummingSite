@@ -9,7 +9,7 @@ const fetchBestemmia = () => {
     }
   };
 
-  fetch(APIurl)
+  fetch(APIurl, config)
     .then(data => data.json())
     .then(res => {
       console.log(res.bestemmia);
