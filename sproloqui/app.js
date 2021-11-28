@@ -1,19 +1,22 @@
-const bestemmiaButton = document.getElementById("bestemmia");
+const bestemmiaButton = document.querySelector("#bestemmia");
 
 const fetchBestemmia = () => {
   let APIurl = "http://bestemmie.org/api/random";
-
-  const options = {
+  const config = {
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-    },
+    }
   };
 
-  axios
-    .get(APIurl, options)
-    .then((response) => console.log(response))
-    .catch((error) => console.error(error));
-};
+  fetch(APIurl)
+    .then(data => data.json())
+    .then(res => {
+      console.log(res.bestemmia);
+      let msg = new SpeechSynthesisUtterance();
+      msg.text = res.bestemmia;
+      window.speechSynthesis.speak(msg);
+    });
+}
 
 bestemmiaButton.onclick = fetchBestemmia;
