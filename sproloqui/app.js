@@ -1,7 +1,7 @@
 const bestemmiaButton = document.querySelector("#bestemmia");
 
 const fetchBestemmia = () => {
-  let APIurl = "http://bestemmie.org/api/random";
+  let APIurl = "https://bestemmie.org/api/random";
   const config = {
     headers: {
       "Content-Type": "application/json",
